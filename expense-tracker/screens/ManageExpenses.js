@@ -3,6 +3,7 @@ import React from 'react';
 import IconButton from '../UI/iconButton';
 import Button from '../UI/Button';
 import ExpenseForm from '../components/ManageExpense/ExpenseForm';
+import { storeExpense } from '../utils/http';
 
 export default function ManageExpenses({ route, navigation }) {
   const id = route.params.expenseId;
@@ -23,6 +24,8 @@ export default function ManageExpenses({ route, navigation }) {
   }
   function confirmHandler(expenseData) {
     if (isEditing) {
+    } else {
+      storeExpense(expenseData);
     }
     navigation.goBack();
   }
